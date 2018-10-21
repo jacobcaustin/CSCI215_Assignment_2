@@ -7,19 +7,59 @@
 <body>
 <div id ="myInput">
 
-   Enter a string here: <input type="text" name="input", id="input">
-    <input type="submit" value="Submit" onclick="inputConvert()"/><br>
+    Enter a string here: <input id="theInput">
+    <button id="count">count</button>
 
 
 
 </div>
-<div id ="myOutput">
+<div id ="myOutput"></div>
 
 
 
-</div>
 
 
-<script src="assignment02Pt2.js"></script>
+
+
+<script>
+    function inputConvert() {
+        var myInput = document.getElementById('theInput').value;
+        myInput = myInput.toUpperCase();
+        myInput = myInput.replace(/\./g, " ");
+        var myWords = myInput.split(" ");
+        var usedWords = [];
+        var currWord = "";
+        var wordCount = 0;
+        var theStatement = currWord + wordCount + "</br>";
+        for( i = 0; i < myWords.length; i++) {
+            currWord = myWords[i];
+            if(!(currWord in usedWords)){
+                wordCount = 0;
+            for( k = i; k < myWords.length; k++){
+                if(myWords[k] === currWord){
+                    wordCount++;
+                }
+                document.getElementById('myOutput').innerHTML = (currWord + " " + wordCount + "</br>");
+            }
+            console.log(currWord + wordCount);
+            document.getElementById('myOutput').innerHTML = (currWord + " " + wordCount + "</br>");
+            }
+
+
+        }
+        document.getElementById('myOutput').innerHTML = (currWord + " " + wordCount + "</br>");
+
+
+
+        document.getElementById('myOutput').innerHTML = myWords;
+        //document.getElementById('myOutput').innerHTML = theStatement;
+    }
+
+
+    document.getElementById('count').addEventListener('click', inputConvert);
+    </script>
+
+
+
 </body>
 </html>
